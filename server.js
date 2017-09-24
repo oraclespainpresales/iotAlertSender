@@ -58,7 +58,7 @@ app.use(cors());
 // REST stuff - BEGIN
 router.use(function(req, res, next) {
   if ( req.method === POST) {
-    console.log(req.body);
+    console.log(util.inspect(req.body, true, null));
     res.status(204).end();
 
 
