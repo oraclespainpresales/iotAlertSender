@@ -60,35 +60,26 @@ router.use(function(req, res, next) {
   if ( req.method === POST) {
 //    console.log(util.inspect(req.body, true, null));
     res.status(204).end();
-
     var e = req.body[0];
-
-
     var pcsPayload = {
     	processDefId:"default~IoT_Alert_Handler!1.0~HandleAlert",
     	serviceName:"HandleAlert.service",
     	operation:"start",
     	action:"Submit",
     }
-
     var params = { source: "IoTCS", type: e.type, alert_description: "Detected malfunction with Cooler in " + e.payload.data.source_location, alert_values: "Temperature: "  + e.payload.data.avg_of_data_internal_temperature_8 + ", Engine vibration: " + e.payload.data.avg_of_data_vibration_8 }
-
     pcsPayload.params = params;
-    console.log(pcsPayload.params);
-
-/**
-    pcsClient.post(restURI+_req.url, _req.body, (err, req, res, data) => {
+    console.log(pcsPayload);
+    pcsClient.post(pcsURI, pcsPayload, (err, _req, _res, data) => {
       if (err) {
-        log.error("","[POST] Error from DB call: " + err.statusCode);
+        log.error("","[POST] Error from PCS call: " + err.statusCode);
         log.error("", "URI: " + restURI+_req.url);
-        log.error("", "Body: " + JSON.stringify(_req.body));
-        _res.status(err.statusCode).send(err.body);
+        log.error("", err);
         return;
+      } else {
+        log.info("", data;
       }
-      _res.type('json');
-      _res.send(data);
     });
-**/
   }
 });
 
