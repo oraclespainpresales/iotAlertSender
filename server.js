@@ -11,9 +11,10 @@ var express = require('express')
   , cors = require('cors')
 ;
 
-const PCSHOST  = "https://process-gse00011668.process.us2.oraclecloud.com";
+const PCSHOST = "https://process-gse00011668.process.us2.oraclecloud.com";
 const POST    = 'POST';
-const restURI = '/bpm/api/4.0/processes';
+const restURI = '/events';
+const pcsURI  = '/bpm/api/4.0/processes';
 
 log.stream = process.stdout;
 log.timestamp = true;
