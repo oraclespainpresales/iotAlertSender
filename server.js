@@ -77,7 +77,7 @@ router.use(function(req, res, next) {
         log.error("", err);
         return;
       } else {
-        log.info("", data;
+        log.info("", data);
       }
     });
   }
