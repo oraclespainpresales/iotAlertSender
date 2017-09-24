@@ -57,7 +57,7 @@ app.use(cors());
 
 // REST stuff - BEGIN
 router.use(function(req, res, next) {
-  if ( _req.method === POST) {
+  if ( req.method === POST) {
     console.log(req.body);
     res.status(204).end();
 
@@ -84,6 +84,6 @@ app.use(restURI, router);
 
 server.listen(PORT, () => {
   _.each(router.stack, (r) => {
-    log.info("","Listening for request at http://localhost:%s%s/*", PORT, restURI);
+    log.info("","Listening for request at http://localhost:%s%s", PORT, restURI);
   });
 });
