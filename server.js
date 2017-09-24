@@ -26,7 +26,12 @@ var app    = express()
   , server = http.createServer(app)
   , pcsClient = restify.createJsonClient({
     url: PCSHOST,
-    rejectUnauthorized: false
+    rejectUnauthorized: false,
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Basic Y2xvdWQuYWRtaW46RmFydGhlckA3R29VR0U='
+    }
   })
 ;
 
